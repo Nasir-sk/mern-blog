@@ -27,3 +27,11 @@ app.use('/api/auth', authRoutes)
 
 // instead of get ( use )
 
+app.use((err, req, res, next)=>{
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internet Server Error';
+    res.status(statusCode).json({
+        statusCode,
+        message,
+    })
+})
