@@ -1,7 +1,7 @@
 import User from '../models/user.model.js'
 import bcrypt from 'bcryptjs'
-
-const signup = async (req, res, next) =>{
+import jwt from 'jsonwebtoken'
+export const signup = async (req, res, next) =>{
     const { username, email, password} = req.body;
 
     if(!username || !email ||!password || username === '' || email ==='' || password ===''){
@@ -23,6 +23,5 @@ const signup = async (req, res, next) =>{
     }catch(error){
      next(error)
     }
-   
-}
+};
 export default signup;
